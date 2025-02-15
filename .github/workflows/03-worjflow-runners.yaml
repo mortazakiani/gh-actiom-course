@@ -17,4 +17,11 @@ jobs:
               shell: bash
               run: |
                 echo "This job is running  on an windows runner."
-                echo "Runner OS: $RUNNER_OS"        
+                echo "Runner OS: $RUNNER_OS"
+    Mac-echo:
+        runs-on: mac-latest
+        steps:
+            - name: Show OS
+              run: |
+                echo "This job is running  on an moac runner."
+                echo "Runner OS: $RUNNER_OS"  
