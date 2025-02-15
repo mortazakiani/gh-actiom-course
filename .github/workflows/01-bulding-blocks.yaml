@@ -12,6 +12,6 @@ jobs:
             - name: Failed step
               run: |
                 echo "I will  succesed"
-                exit 0  
+                exit 1  
             - name: say goodbay
               run: echoo goodbye
