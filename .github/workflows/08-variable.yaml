@@ -1,0 +1,33 @@
+name: 08-variable
+
+on: push
+
+env:
+    WORKFLOW_VAR: 'I am a workflow env var'
+    OVERWRITTEN: 'I will  be overwritten'
+
+jobs:
+    echo:
+        runs-on: windows-latest
+        env:
+            JOB_VAR: 'I am a job env var'
+            OVERWRITTEN: 'I have been  overwritten at  the job level'
+        steps:
+          - name: Print Env Varibales
+            env:
+              STEP_VAR: 'I am a step env var'
+              step_var2: ' I ma another step env var'
+            run: |
+               echo "Step env var:${{env.STEP_VAR}}"
+               echo "Step env var2: $step_var"
+               echo "Job env var:${{env.JOB_VAR}}"
+               echo "workflow env var:${{env.WORKFLOW_VAR}}"
+               echo "workflow env var:${{env.OVERWRITTEN}}"
+          - name: OverWritten job  variable
+            env:
+              OVERWRITTEN: 'I have been overwritten at the  step level'
+            run: |
+                echo "Step env var: ${{env.OVERWRITTEN}}"
+
+
+
